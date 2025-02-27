@@ -1,12 +1,12 @@
-import { type Language } from './types';
+import type { Language } from './types';
 
 export const UI: {
   readonly [key in Language]: Record<string, string>;
 } = {
   en: {
-    'teste.teste': '',
+    'routing.redirect': 'Redirect...',
   },
   pt: {
-    'teste.teste': '',
+    'routing.redirect': 'Redirecionando...',
   },
 } as const;

@@ -1,8 +1,15 @@
 ---
-import { LANGUAGES } from '@/i18n/consts';
+import { LANGUAGES, LOCALES_INFO } from '@/i18n/consts';
+import type { Language } from '@/i18n/types';
+import Layout from '@/layouts/Layout.astro';
 
 export const getStaticPaths = () =>
   LANGUAGES.map(lang => ({
     params: { lang },
   }));
+
+const currentLocale = Astro.currentLocale as Language;
+const lang = LOCALES_INFO[currentLocale]?.lang || currentLocale;
 ---
+
+<Layout title="" />

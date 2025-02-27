@@ -1,24 +1,16 @@
 ---
 import { DEFAULT_LANGUAGE, LANGUAGES, LOCALES_INFO } from '@/i18n/consts';
-import { getRelativeLocaleUrl } from 'astro:i18n';
+import { getLocalePaths, useTranslations } from '@/i18n/utils';
+import HtmlHead from '@/components/HtmlHead.astro';
 
-//TODO: tag title
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const t = useTranslations(DEFAULT_LANGUAGE);
+const baseUrl = import.meta.env.PROD ? Astro.site : '/'; //TODO: verificar se precisa
 ---
 
+<!doctype html>
 <html lang={DEFAULT_LANGUAGE}>
   <head>
-    <meta charset="UTF-8" />
-    <title>redirect...</title>
-    <link
-      rel="sitemap"
-      href="/sitemap-index.xml"
-    />
-    <meta
-      name="generator"
-      content={Astro.generator}
-    />
+    <HtmlHead title={t('routing.redirect')} />
     <noscript>
       <meta
         http-equiv="refresh"
@@ -26,18 +18,23 @@ import { getRelativeLocaleUrl } from 'astro:i18n';
       />
     </noscript>
 
-    {
-      LANGUAGES.map(language => {
-        return (
-          <Fragment>
-            <link
-              rel="alternate"
-              hreflang={LOCALES_INFO[language].lang}
-              href={Astro.site?.origin + getRelativeLocaleUrl(language)}
-            />
-          </Fragment>
-        );
-      })
-    }
+    <script is:inline define:vars={{ LANGUAGES, baseUrl, DEFAULT_LANGUAGE }}>
+      if (
+        localStorage.selectedLang &&
+        LANGUAGES.includes(localStorage.selectedLang)
+      ) {
+        location.href = `${baseUrl + localStorage.selectedLang}/`;
+        return;
+      }
+
+      const browserLang = navigator.language.toLowerCase().split('-')[0];
+
+      if (LANGUAGES.includes(browserLang)) {
+        location.href = `${baseUrl + browserLang}/`;
+        return;
+      }
+
+      location.href = `${baseUrl + defaultLocale}/`;
+    </script>
   </head>
 </html>

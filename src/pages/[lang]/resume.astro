@@ -1,0 +1,11 @@
+---
+import { LANGUAGES } from '@/i18n/consts';
+import Layout from '@/layouts/Layout.astro';
+
+export const getStaticPaths = () =>
+  LANGUAGES.map(lang => ({
+    params: { lang },
+  }));
+---
+
+<Layout title="" />
