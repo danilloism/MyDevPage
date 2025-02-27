@@ -1,0 +1,8 @@
+---
+import { LANGUAGES } from '@/i18n/consts';
+
+export const getStaticPaths = () =>
+  LANGUAGES.map(lang => ({
+    params: { lang },
+  }));
+---

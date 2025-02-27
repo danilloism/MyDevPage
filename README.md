@@ -46,3 +46,11 @@ All commands are run from the root of the project, from a terminal:
 ## 👀 Want to learn more?
 
 Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+
+## My references
+
+- [Sitemap integration docs](https://docs.astro.build/en/guides/integrations-guide/sitemap/)
+- [Astro i18n docs](https://docs.astro.build/en/guides/internationalization/)
+- [Astro i18n recipe](https://docs.astro.build/en/recipes/i18n/)
+- [Content collection docs](https://docs.astro.build/en/guides/content-collections/)
+- [Astro i18n Starter Them by Akira HIRATA](https://astro.build/themes/details/i18n-starter/)
