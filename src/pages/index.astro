@@ -9,15 +9,17 @@ const baseUrl = import.meta.env.PROD ? Astro.site : '/'; //TODO: verificar se pr
 
 <!doctype html>
 <html lang={DEFAULT_LANGUAGE}>
-  <head>
-    <HtmlHead title={t('routing.redirect')} />
+  <HtmlHead title={t('routing.redirect')}>
+    {
+      // Copyright (c) 2024 Akira HIRATA. Licensed under MIT.
+      // Adapted by Danillo Ilggner.
+    }
     <noscript>
       <meta
         http-equiv="refresh"
         content={`0;url=/${DEFAULT_LANGUAGE}/`}
       />
     </noscript>
-
     <script is:inline define:vars={{ LANGUAGES, baseUrl, DEFAULT_LANGUAGE }}>
       if (
         localStorage.selectedLang &&
@@ -36,5 +38,5 @@ const baseUrl = import.meta.env.PROD ? Astro.site : '/'; //TODO: verificar se pr
 
       location.href = `${baseUrl + defaultLocale}/`;
     </script>
-  </head>
+  </HtmlHead>
 </html>
