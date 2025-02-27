@@ -37,7 +37,9 @@ type LocalePath = {
 };
 
 /**
- * Original: 'localeParams' by Akira HIRATA (MIT License)
+ * Copyright (c) 2024 Akira HIRATA. Licensed under MIT.
+ * Original: 'localeParams'
+ * Adapted by Danillo Ilggner.
  */
 export const pageParamsObjects = LANGUAGES.map(lang => ({
   params: { lang },
